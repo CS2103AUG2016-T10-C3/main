@@ -42,7 +42,7 @@ public interface Model {
 
     //@@author A0142290N
     /** Marks given task as complete */
-    void completedTask(Task target) throws TaskNotFoundException;  
+    void completedTask(Task target) throws TaskNotFoundException;
     //@@author
     
     /** Adds the given task */
@@ -53,7 +53,7 @@ public interface Model {
 
     /** Updates the filter of the filtered task list to show all tasks */
     void updateFilteredListToShowAll();
-    
+
     /** Updates the filter of the filtered task list to filter by the given keywords*/
     void updateFilteredTaskList(Set<String> keywords);
     
@@ -64,8 +64,6 @@ public interface Model {
     /** Updates the filter of the filtered task list to filter out tasks with completed tag*/
     void updateFilteredListToShowUncompleted(); 
     
-    int getTagColor(String tagName);
-
     void updateTagColor(UniqueTagList uniqueTagList);
 
 }

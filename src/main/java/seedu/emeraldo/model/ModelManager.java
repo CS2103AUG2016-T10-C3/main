@@ -104,10 +104,6 @@ public class ModelManager extends ComponentManager implements Model {
     	indicateEmeraldoChanged();
     }
     
-    public int getTagColor(String tagName){
-    	return emeraldo.getTagColor(tagName);
-    }
-    
     public void updateTagColor(UniqueTagList tag){
         emeraldo.updateTagColor(tag);
     }
@@ -316,5 +312,4 @@ public class ModelManager extends ComponentManager implements Model {
             return "tag=" + String.join(", ", completedTag);
         }
     }
-    
 }

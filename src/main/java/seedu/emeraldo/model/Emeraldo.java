@@ -83,7 +83,6 @@ public class Emeraldo implements ReadOnlyEmeraldo {
         syncTagsWithMasterList(p);
         tasks.add(p);
     }
-   
 
     /**
      * Ensures that every tag in this task:
