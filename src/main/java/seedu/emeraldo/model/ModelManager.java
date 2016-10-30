@@ -14,6 +14,7 @@ import seedu.emeraldo.commons.events.model.EmeraldoChangedEvent;
 import seedu.emeraldo.commons.exceptions.IllegalValueException;
 import seedu.emeraldo.commons.util.StringUtil;
 import seedu.emeraldo.model.tag.Tag;
+import seedu.emeraldo.model.tag.UniqueTagList;
 import seedu.emeraldo.model.task.DateTime;
 import seedu.emeraldo.model.task.Description;
 import seedu.emeraldo.model.task.ReadOnlyTask;
@@ -105,6 +106,10 @@ public class ModelManager extends ComponentManager implements Model {
     
     public int getTagColor(String tagName){
     	return emeraldo.getTagColor(tagName);
+    }
+    
+    public void updateTagColor(UniqueTagList tag){
+        emeraldo.updateTagColor(tag);
     }
     
     @Override

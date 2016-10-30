@@ -133,23 +133,21 @@ public class Emeraldo implements ReadOnlyEmeraldo {
         tags.add(t);
     }
     
-    public int getTagColor(String tagName) {
-    	//int tagColor = getUniqueTaskList().getNextTagColor();
-    	int tagColor = 0;
-    	Iterator<Task> taskIterator = tasks.iterator();
-    	
-    	while (taskIterator.hasNext()){
-    		Task task = taskIterator.next();
-	    	Iterator<Tag> tagIterator = task.getTags().iterator();
-	    	
-	    	//Returns tagColor of the existing tag if the input tag already exists
-	    	while (tagIterator.hasNext()){
-	    		Tag tag = tagIterator.next();
-	    		if(tag.toString().equals(tagName))
-	    			tagColor = tag.tagColor;
-	    	}
-    	}
-    	return tagColor;
+    public void updateTagColor(UniqueTagList tagList) {
+
+        Iterator<Task> taskIterator = tasks.iterator();
+        
+        String tagName = tagList.getCurrentTag(0).toString();
+        while (taskIterator.hasNext()){
+            Task task = taskIterator.next();
+            Iterator<Tag> tagIterator = task.getTags().iterator();
+            
+            while (tagIterator.hasNext()){
+                Tag tag = tagIterator.next();
+                if (tag.toString().equals(tagName))
+                    tagList.getCurrentTag(0).tagColor = tag.tagColor;
+            }
+        }
     }
     
 //// util methods
@@ -194,4 +192,5 @@ public class Emeraldo implements ReadOnlyEmeraldo {
         // use this method for custom fields hashing instead of implementing your own
         return Objects.hash(tasks, tags);
     }
+
 }

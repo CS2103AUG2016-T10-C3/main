@@ -1,6 +1,8 @@
 package seedu.emeraldo.model;
 
 import seedu.emeraldo.commons.core.UnmodifiableObservableList;
+import seedu.emeraldo.model.tag.Tag;
+import seedu.emeraldo.model.tag.UniqueTagList;
 import seedu.emeraldo.model.task.DateTime;
 import seedu.emeraldo.model.task.Description;
 import seedu.emeraldo.model.task.ReadOnlyTask;
@@ -63,5 +65,7 @@ public interface Model {
     void updateFilteredListToShowUncompleted(); 
     
     int getTagColor(String tagName);
+
+    void updateTagColor(UniqueTagList uniqueTagList);
 
 }

@@ -51,6 +51,10 @@ public class Tag {
         this.tagName = name;
         this.tagColor = color;
     }
+    
+    public void setTagColor(int tagColor){
+        this.tagColor = tagColor;
+    }
 
     /**
      * Returns true if a given string is a valid tag name.

@@ -123,6 +123,10 @@ public class UniqueTagList implements Iterable<Tag> {
     public Iterator<Tag> iterator() {
         return internalList.iterator();
     }
+    
+    public Tag getCurrentTag(int index){
+        return internalList.get(index);
+    }
 
     public ObservableList<Tag> getInternalList() {
         return internalList;

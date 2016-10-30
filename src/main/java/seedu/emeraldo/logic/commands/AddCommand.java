@@ -37,8 +37,7 @@ public class AddCommand extends Command {
             throws IllegalValueException {
         final Set<Tag> tagSet = new HashSet<>();
         for (String tagName : tags) {
-        	int tagColor = getTagColor(tagName);
-        	Tag tag = new Tag(tagName, tagColor);
+        	Tag tag = new Tag(tagName);
             tagSet.add(tag);           
         }
         this.toAdd = new Task(
@@ -48,16 +47,12 @@ public class AddCommand extends Command {
         );
     }
     
-    public int getTagColor(String tagName) {
-    	assert model != null;
-    	return model.getTagColor(tagName);
-    }
-    
     @Override
     public CommandResult execute() {
         assert model != null;
         try {
             model.addTask(toAdd);
+            model.updateTagColor(toAdd.getTags());
             return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
         } catch (UniqueTaskList.DuplicateTaskException e) {
             return new CommandResult(MESSAGE_DUPLICATE_TASK);
