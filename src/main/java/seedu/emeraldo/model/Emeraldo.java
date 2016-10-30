@@ -83,7 +83,6 @@ public class Emeraldo implements ReadOnlyEmeraldo {
         syncTagsWithMasterList(p);
         tasks.add(p);
     }
-   
 
     /**
      * Ensures that every tag in this task:
@@ -132,26 +131,7 @@ public class Emeraldo implements ReadOnlyEmeraldo {
     public void addTag(Tag t) throws UniqueTagList.DuplicateTagException {
         tags.add(t);
     }
-    
-    public int getTagColor(String tagName) {
-    	//int tagColor = getUniqueTaskList().getNextTagColor();
-    	int tagColor = 0;
-    	Iterator<Task> taskIterator = tasks.iterator();
-    	
-    	while (taskIterator.hasNext()){
-    		Task task = taskIterator.next();
-	    	Iterator<Tag> tagIterator = task.getTags().iterator();
-	    	
-	    	//Returns tagColor of the existing tag if the input tag already exists
-	    	while (tagIterator.hasNext()){
-	    		Tag tag = tagIterator.next();
-	    		if(tag.toString().equals(tagName))
-	    			tagColor = tag.tagColor;
-	    	}
-    	}
-    	return tagColor;
-    }
-    
+
 //// util methods
 
     @Override

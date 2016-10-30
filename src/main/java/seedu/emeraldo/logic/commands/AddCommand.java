@@ -37,9 +37,7 @@ public class AddCommand extends Command {
             throws IllegalValueException {
         final Set<Tag> tagSet = new HashSet<>();
         for (String tagName : tags) {
-        	int tagColor = getTagColor(tagName);
-        	Tag tag = new Tag(tagName, tagColor);
-            tagSet.add(tag);           
+            tagSet.add(new Tag(tagName));
         }
         this.toAdd = new Task(
                 new Description(description),
@@ -47,12 +45,7 @@ public class AddCommand extends Command {
                 new UniqueTagList(tagSet)
         );
     }
-    
-    public int getTagColor(String tagName) {
-    	assert model != null;
-    	return model.getTagColor(tagName);
-    }
-    
+
     @Override
     public CommandResult execute() {
         assert model != null;

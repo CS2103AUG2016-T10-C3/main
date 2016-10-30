@@ -103,10 +103,6 @@ public class ModelManager extends ComponentManager implements Model {
     	indicateEmeraldoChanged();
     }
     
-    public int getTagColor(String tagName){
-    	return emeraldo.getTagColor(tagName);
-    }
-    
     @Override
     public void resetData(ReadOnlyEmeraldo newData) {
         emeraldo.resetData(newData);
@@ -311,5 +307,4 @@ public class ModelManager extends ComponentManager implements Model {
             return "tag=" + String.join(", ", completedTag);
         }
     }
-    
 }
