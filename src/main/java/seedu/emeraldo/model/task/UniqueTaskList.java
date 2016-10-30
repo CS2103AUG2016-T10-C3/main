@@ -37,6 +37,7 @@ public class UniqueTaskList implements Iterable<Task> {
     public static class TaskNotFoundException extends Exception {}
 
     private final ObservableList<Task> internalList = FXCollections.observableArrayList();
+    public int tagColor = 0;
 
     /**
      * Constructs empty TaskList.
@@ -95,11 +96,16 @@ public class UniqueTaskList implements Iterable<Task> {
     
     //@@author A0142290N
     public void complete(Task toCompleteObj) throws IllegalValueException {
-    	Tag completedTag = new Tag("Completed");
+    	Tag completedTag = new Tag("Completed", 0);
     	UniqueTagList completedTagList = new UniqueTagList(completedTag);
     	toCompleteObj.setTags(completedTagList);
     	int mainListIndex = internalList.indexOf(toCompleteObj);
     	internalList.set(mainListIndex, toCompleteObj);
+    }
+    
+    public int getNextTagColor(){
+    	tagColor = (tagColor + 1)%5;
+    	return tagColor;
     }
     //@@author
     

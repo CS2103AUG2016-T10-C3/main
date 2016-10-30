@@ -1,6 +1,7 @@
 package seedu.emeraldo.model.tag;
 
-
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import seedu.emeraldo.commons.exceptions.IllegalValueException;
 
 /**
@@ -11,14 +12,18 @@ public class Tag {
 
     public static final String MESSAGE_TAG_CONSTRAINTS = "Tags names should be alphanumeric";
     public static final String TAG_VALIDATION_REGEX = "\\p{Alnum}+";
+    public static int tagColors = 0;
 
     public String tagName;
+    public int tagColor;
 
+    private final ObservableList<Tag> internalList = FXCollections.observableArrayList();
+    
     public Tag() {
     }
 
     /**
-     * Validates given tag name.
+     * Validates given tag name, gives color 0.
      *
      * @throws IllegalValueException if the given tag name string is invalid.
      */
@@ -29,6 +34,22 @@ public class Tag {
             throw new IllegalValueException(MESSAGE_TAG_CONSTRAINTS);
         }
         this.tagName = name;
+        this.tagColor = 0;
+    }
+    
+    /**
+     * Validates given tag name and color.
+     *
+     * @throws IllegalValueException if the given tag name string is invalid.
+     */   
+    public Tag(String name, int color) throws IllegalValueException {
+        assert name != null;
+        name = name.trim();
+        if (!isValidTagName(name)) {
+            throw new IllegalValueException(MESSAGE_TAG_CONSTRAINTS);
+        }
+        this.tagName = name;
+        this.tagColor = color;
     }
 
     /**
@@ -37,7 +58,7 @@ public class Tag {
     public static boolean isValidTagName(String test) {
         return test.matches(TAG_VALIDATION_REGEX);
     }
-
+    
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object

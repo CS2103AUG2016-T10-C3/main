@@ -1,5 +1,8 @@
 package seedu.emeraldo.model.task;
 
+import java.awt.List;
+import java.util.ArrayList;
+
 import seedu.emeraldo.model.tag.UniqueTagList;
 
 /**
@@ -45,7 +48,7 @@ public interface ReadOnlyTask {
      */
     default String tagsString() {
         final StringBuffer buffer = new StringBuffer();
-        final String separator = ", ";
+        final String separator = " ";        
         getTags().forEach(tag -> buffer.append(tag).append(separator));
         if (buffer.length() == 0) {
             return "";
