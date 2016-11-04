@@ -78,8 +78,6 @@ public class TestUtil {
                     new Task(new Description("Buy groceries for mum"), new DateTime("from 30/05/2017, 13:00 to 06/06/2017, 14:00"), new UniqueTagList())
             };
         } catch (IllegalValueException e) {
-            assert false;
-            //not possible
             return null;
         }
     }

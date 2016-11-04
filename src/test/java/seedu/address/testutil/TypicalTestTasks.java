@@ -1,8 +1,12 @@
 package seedu.address.testutil;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import seedu.emeraldo.commons.exceptions.IllegalValueException;
 import seedu.emeraldo.model.Emeraldo;
 import seedu.emeraldo.model.task.*;
+import seedu.emeraldo.model.task.UniqueTaskList.DuplicateTaskException;
 
 /**
  *
@@ -20,23 +24,22 @@ public class TypicalTestTasks {
                     .withTags("buyGift", "friends").build();
             book = new TaskBuilder().withDescription("Return book to library").withDateTime("on 01-05-2015").build();
             food = new TaskBuilder().withDescription("Bring food for party").withDateTime("on 01 06 2015").build();
-            haircut = new TaskBuilder().withDescription("Go for a haircut").withDateTime("on 30 Nov").build();
+            haircut = new TaskBuilder().withDescription("Go for a haircut").withDateTime("on 30 nov").build();
             fines = new TaskBuilder().withDescription("Pay for parking fines")
-                    .withDateTime("from 30/01/2017, 4.00pm to 28/02/2018, 6:00pm").build();
+                    .withDateTime("from 30/01/2016, 4.00pm to 28/02/2016, 6:00pm").build();
             tutorial = new TaskBuilder().withDescription("Complete tutorial for EE2020")
                     .withDateTime("from 30 May, 13:00 to 06 Jun, 14:00").build();
 
             //Manually added
             homework = new TaskBuilder().withDescription("Do Homework").withDateTime("by 20/03/16, 14:01").build();
-            groceries = new TaskBuilder().withDescription("Buy groceries for mum").withDateTime("on 20 Dec 2016").build();
+            groceries = new TaskBuilder().withDescription("Buy groceries for mum").withDateTime("on 20 Oct 2016").build();
+            
         } catch (IllegalValueException e) {
             e.printStackTrace();
-            assert false : "not possible";
         }
     }
-
+    
     public static void loadEmeraldoWithSampleData(Emeraldo ab) {
-
         try {
             ab.addTask(new Task(application));
             ab.addTask(new Task(party));
@@ -53,10 +56,29 @@ public class TypicalTestTasks {
     public TestTask[] getTypicalTasks() {
         return new TestTask[]{application, party, book, food, haircut, fines, tutorial};
     }
+    
+    public static void loadEmeraldoWithSampleData(Emeraldo ab, List<TestTask> taskToAdd){
+		try {
+            ab.addTask(new Task(application));
+            ab.addTask(new Task(party));
+            ab.addTask(new Task(book));
+            ab.addTask(new Task(food));
+            ab.addTask(new Task(haircut));
+            ab.addTask(new Task(fines));
+            ab.addTask(new Task(tutorial));
+            
+	    	for(TestTask t: taskToAdd){
+	    		ab.addTask(new Task(t));
+	    	}
+		} catch (UniqueTaskList.DuplicateTaskException e) {
+			assert false : "not possible";
+		}
+    }
 
     public Emeraldo getTypicalEmeraldo(){
         Emeraldo ab = new Emeraldo();
         loadEmeraldoWithSampleData(ab);
         return ab;
     }
+    
 }

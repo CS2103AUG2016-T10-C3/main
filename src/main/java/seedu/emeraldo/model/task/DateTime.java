@@ -134,7 +134,8 @@ public class DateTime {
             this.value = dateTime;
         }
     }
-
+    
+    //Used by the XmlAdaptedTask
     public DateTime(String dateTime, String completedDateTime) throws IllegalValueException, DateTimeException{
     	//Calls the other constructor to initialise the values less completedValueDate and completedValueTime
     	this(dateTime);

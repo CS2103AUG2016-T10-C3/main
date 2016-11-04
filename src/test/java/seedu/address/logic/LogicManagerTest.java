@@ -7,6 +7,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 
+import seedu.address.testutil.TestUtil;
+import seedu.address.testutil.TimePeriodTestTasks;
 import seedu.emeraldo.commons.core.EventsCenter;
 import seedu.emeraldo.commons.events.model.EmeraldoChangedEvent;
 import seedu.emeraldo.commons.events.ui.JumpToListRequestEvent;
@@ -197,7 +199,7 @@ public class LogicManagerTest {
 
     //@@author A0139749L
     @Test
-    public void execute_list_showsAllTasks() throws Exception {
+    public void execute_listall_showsAllTasks() throws Exception {
         // prepare expectations
         TestDataHelper helper = new TestDataHelper();
         Emeraldo expectedAB = helper.generateEmeraldo(2);
